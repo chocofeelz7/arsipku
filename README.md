@@ -110,7 +110,6 @@ Login, unggah foto, dan tambah divisi juga diperiksa melalui browser lokal. Peng
 
 Gunakan `.env.hosting.example` sebagai referensi konfigurasi. Document root harus menunjuk ke **`public`**. Simpan dokumen/foto di `storage/app/private`, pertahankan `APP_DEBUG=false`, serta aktifkan HTTPS.
 
-- [Deployment Dewaweb / cPanel](docs/DEPLOYMENT-DEWAWEB.md)
 - [Panduan pengguna](docs/PANDUAN-PENGGUNA.md)
 - [PRD awal proyek](docs/PRD-ArsipKU-v1.0.md)
 
