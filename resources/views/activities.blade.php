@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title', 'Riwayat Aktivitas')
+@section('content')
+<div class="page-heading"><div><span class="eyebrow">KETERLACAKAN</span><h1>Setiap aktivitas, tercatat.</h1><p>Riwayat sesuai kewenangan Anda. Catatan tidak dapat diubah melalui aplikasi.</p></div></div><section class="panel flush"><div class="table-wrap"><table><thead><tr><th>Waktu (WIB)</th><th>Pengguna</th><th>Aktivitas</th><th>Arsip</th></tr></thead><tbody>@forelse($activities as $activity)<tr><td class="muted">{{ $activity->created_at->format('d/m/Y H:i:s') }}</td><td>{{ $activity->user?->name ?? 'Sistem' }}</td><td>{{ $activity->action }}@if(isset($activity->details['version']))<small class="document-subtitle">Versi {{ $activity->details['version'] }}</small>@endif</td><td>@if($activity->document)<a class="code" href="{{ route('documents.show', $activity->document_id) }}">{{ $activity->document->code }}</a>@else<span class="muted">Administrasi / akun</span>@endif</td></tr>@empty<tr><td colspan="4"><div class="empty">Belum ada aktivitas.</div></td></tr>@endforelse</tbody></table></div>@include('partials.pagination', ['paginator' => $activities])</section>
+@endsection

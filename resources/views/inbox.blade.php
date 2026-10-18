@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title', 'Notifikasi')
+@section('content')
+<div class="page-heading"><div><span class="eyebrow">PEMBARUAN RUANG ARSIP</span><h1>Notifikasi</h1><p>Pengajuan baru dan hasil validasi yang berkaitan dengan kewenangan Anda.</p></div></div><section class="panel">@forelse($messages as $message)<div class="file-row"><span class="timeline-dot"><x-icon name="bell" size="17"/></span><div class="file-info"><strong>{{ $message->message }}</strong><small>{{ $message->created_at->format('d/m/Y H:i') }} WIB · {{ $message->read_at ? 'Sudah dibaca' : 'Belum dibaca' }}</small></div><form method="POST" action="{{ route('inbox.read', $message) }}">@csrf<button type="submit" class="button small">Buka dokumen<x-icon name="arrow" size="14"/></button></form></div>@empty<div class="empty"><x-icon name="bell" size="30"/><h3>Belum ada notifikasi</h3><p>Pembaruan pengajuan dan validasi akan tampil di sini.</p></div>@endforelse @include('partials.pagination', ['paginator' => $messages])</section>
+@endsection
